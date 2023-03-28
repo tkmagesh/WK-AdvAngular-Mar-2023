@@ -1,27 +1,23 @@
 <h1>Bug Tracker</h1>
 <hr>
-<section class="stats">
-  <span class="closed">1</span>
-  <span> / </span>
-  <span>2</span>
-</section>
+<app-bug-stats [data]="bugs"></app-bug-stats>
 <section class="edit">
   <label for="">Bug Name :</label>
-  <input type="text" name="" id="">
-  <button>Add New</button>
+  <input type="text" #txtNewBugName (input)="newBugName = txtNewBugName.value">
+  <span> [{{newBugName.length}}] </span>
+  <button (click)="onBtnAddNewClick()">
+    Add New
+  </button>
 </section>
 <section class="list">
   <ul>
-    <li>
-      <span class="bugName">Bug - 1</span>
-      <div class="datetime">[Created At]</div>
-      <button>Remove</button>
-    </li>
-    <li>
-      <span class="bugName closed">Bug - 2</span>
-      <div class="datetime">[Created At]</div>
-      <button>Remove</button>
+    <li *ngFor="let bug of bugs">
+      <span class="bugName" (click)="onBugNameClick(bug)"
+        [ngClass]="{closed : bug.isClosed}"
+      >{{bug.name}}</span>
+      <div class="datetime">{{bug.createdAt | elapsed}}</div>
+      <button (click)="onBtnRemoveClick(bug)">Remove</button>
     </li>
   </ul>
-  <button>Remove Closed</button>
+  <button (click)="onBtnRemoveClosedClick()">Remove Closed</button>
 </section>
