@@ -1,0 +1,30 @@
+Schedule:
+    Commence    : 9:30 AM
+    Tea Break   : 11:00 AM (15 mins)
+    Lunch Break : 1:00 PM (1 hr)
+    Tea Break   : 3:30 PM (15 mins)
+    Wind up     : 5:30 PM
+
+Methodology:
+    * No powerpoints
+    * 100% code driven
+
+Repository:
+    https://github.com/tkmagesh/WK-AdvAngular-Mar-2023
+
+About You:
+    Name
+    Specialization
+    Experience in Angular
+    Anything specific in Angular you would be interested in?
+
+Books:
+    Patterns Of Enterprise Application Architecture (Martin Fowler)
+
+
+Source of State change
+    1. User Interaction
+    2. Ajax
+    3. Timers
+    4. Server Sent Events
+    5. Web Sockets
