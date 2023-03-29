@@ -27,5 +27,5 @@ setTimeout(() => {
 setTimeout(() => {
     console.log('unsubscribing from observable')
     subscriber1.unsubscribe()
-    subscriber2.unsubscribe()
+    // subscriber2.unsubscribe()
 }, 5000);

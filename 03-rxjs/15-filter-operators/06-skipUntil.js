@@ -7,7 +7,7 @@ const observable$ = interval(500)
 
 observable$.pipe(
     skipUntil(pageNavigationSubject$)
-).subscribe(() => console.log('500ms have passed'))
+).subscribe(console.log)
 
 setTimeout(() => {
     pageNavigationSubject$.next('Start')

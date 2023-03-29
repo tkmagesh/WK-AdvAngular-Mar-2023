@@ -28,3 +28,7 @@ Source of State change
     3. Timers
     4. Server Sent Events
     5. Web Sockets
+
+
+Observable
+    TEMPLATE for a stream

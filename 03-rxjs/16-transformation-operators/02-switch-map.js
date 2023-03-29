@@ -8,10 +8,11 @@ const timer$ = interval(1000)
 const switch$ = new Subject();
 
 // Emit timer data only when the switch is on
-const subscription = switch$.pipe(
+const obs$ = switch$.pipe(
     filter(toggle => toggle),
     switchMap(toggle => timer$)
-).subscribe(time => console.log('ms passed: ' + time))
+)
+obs$.subscribe(time => console.log('ms passed: ' + time))
 
 
 // Simulation

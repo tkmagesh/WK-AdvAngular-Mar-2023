@@ -10,7 +10,7 @@ const switch$ = new Subject();
 // Use mergeMap to have multiple active inner subscriptions
 const subscription = switch$.pipe(
     mergeMap(toggle => publishToServer$)
-).subscribe(time => console.log('data sent: ' + time))
+).subscribe(val => console.log('data sent: ' + val))
 
 
 // The simulation

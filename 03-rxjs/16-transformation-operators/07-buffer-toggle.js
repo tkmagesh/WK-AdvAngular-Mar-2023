@@ -17,12 +17,12 @@ const subscription = source$
 // The simulation
 setTimeout(() => source$.next(1), 2000);
 setTimeout(() => source$.next(2), 3000);
-setTimeout(() => toggleOn$.next('on'), 3400);
+setTimeout(() => toggleOn$.next(true), 3400);
 setTimeout(() => source$.next(3), 4000);
 
 setTimeout(() => source$.next(4), 5000);
 setTimeout(() => source$.next(5), 6000);
-setTimeout(() => toggleOff$.next('off'), 6200);
+setTimeout(() => toggleOff$.next(true), 6200);
 setTimeout(() => source$.next(6), 7000);
 
 setTimeout(() => subscription.unsubscribe(), 10000);

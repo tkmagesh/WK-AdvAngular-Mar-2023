@@ -10,5 +10,8 @@ observable$.pipe(
 
 // Example 1 - take first that passes the predicate, or default otherwise
 observable$.pipe(
+    
+    // first()
+    // first(no => no % 2 === 0)
     first(val => val > 6, -1)
 ).subscribe(console.log)
