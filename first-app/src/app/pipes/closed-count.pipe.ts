@@ -10,7 +10,7 @@ import { Bug } from '../models/bug';
 export class ClosedCountPipe implements PipeTransform {
 
   transform(bugs: Bug[], ...args: unknown[]): number {
-    console.log('closedCount triggered')
+    // console.log('closedCount triggered')
     return bugs.reduce((closedCount, bug) => bug.isClosed ? closedCount + 1 : closedCount, 0)
   }
 

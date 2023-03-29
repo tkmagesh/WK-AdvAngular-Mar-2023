@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { ClosedCountPipe } from './pipes/closed-count.pipe';
 import { ElapsedPipe } from './pipes/elapsed.pipe';
 import { BugStatsComponent } from './components/bug-stats/bug-stats.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +17,10 @@ import { BugStatsComponent } from './components/bug-stats/bug-stats.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
