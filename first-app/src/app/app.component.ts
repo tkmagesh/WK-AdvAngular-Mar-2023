@@ -1,7 +1,9 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { Bug } from './models/bug'
 import { HttpClient } from '@angular/common/http'
 import { concatMap, debounceTime, distinctUntilChanged, from, fromEvent, map, mergeMap, Observable, of, startWith, switchMap, tap } from 'rxjs';
+import { DateService } from './services/date.service';
+import { APP_NAME_TOKEN } from './services/app.service';
 
 @Component({
   selector: 'app-root',
@@ -19,22 +21,30 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   @ViewChild('txtSearch', { static: true }) txtSearch! : ElementRef;
 
-  constructor(private httpClient : HttpClient){
+  currentTime !: Date;
+
+  constructor(
+    private httpClient : HttpClient, 
+    private dateService : DateService,
+    @Inject(APP_NAME_TOKEN)public appName : string
+    ){
     
   }
   ngAfterViewInit(): void {
-     this.bugs$ = fromEvent(this.txtSearch.nativeElement, 'input')
+     this.bugs$ = fromEvent(this.txtSearch.nativeElement, 'keyup')
         .pipe(
           tap(() => console.log('search term entered')),
           startWith(''),
-          // debounceTime(400),
+          debounceTime(400),
+          map(() => this.txtSearch.nativeElement.value),
           distinctUntilChanged(),
-          mergeMap(() => this.getBugs(this.txtSearch.nativeElement.value))
+          switchMap((searchText) => this.getBugs(searchText))
         )
   }
   ngOnInit(): void {
     // this.bugs$ = this.getBugs('')
-
+    // const dateService = new DateService()
+    this.currentTime = this.dateService.getCurrentTime()
   }
 
   getBugs(searchText : string) : Observable<Bug[]>{
