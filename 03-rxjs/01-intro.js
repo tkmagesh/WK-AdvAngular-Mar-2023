@@ -1,23 +1,58 @@
-var { Observable } = require('rxjs')
+var { Observable, of, from } = require('rxjs')
 
-let obs$ = new Observable(subscriber => {
+let obs$ = new Observable(observer => {
     console.log('sending values')
-    subscriber.next(10)
-    subscriber.next(20)
-    subscriber.next(30)
-    subscriber.next(40)
-    // subscriber.error(new Error('invalid arguments'))
-    subscriber.complete()
+    observer.next(10)
+    observer.next(20)
+    observer.next(30)
+    observer.next(40)
+    // observer.error(new Error('invalid arguments'))
+    observer.complete()
     return () => console.log('observable unsubscribed')
 })
 
-let subscription = obs$.subscribe({
+let timerObs$ = new Observable(observer => {
+    console.log('observable created')
+    let no = 0
+    const timerId = setInterval(() => {
+        observer.next(++no)
+    }, 1000);
+    return () => {
+        console.log('subscriber has unsubscribed. stoping the timer')
+        clearInterval(timerId)
+    }
+})
+
+let values = [10, 20, 30, 40, 50]
+/* 
+var arrObs$ = new Observable(observer => {
+    for (let value of values)
+        observer.next(value)
+    observer.complete()
+}) 
+*/
+// var arrObs$ = from(values)
+var arrObs$ = of(values)
+
+
+var promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(1000)
+    }, 4000);
+})
+
+var promiseObj$ = from(promise)
+
+let subscription = timerObs$.subscribe({
     next : val => console.log(val),
     complete : () => console.log('All the values received'),
     error : err => console.log('Error :', err)
 })
 
-subscription.unsubscribe()
+setTimeout(() => {
+    subscription.unsubscribe()    
+}, 10000);
+
 
 
 /* 
