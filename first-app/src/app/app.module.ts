@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DateService } from './services/date.service';
 import { EnhancedDateService } from './services/enhancedDate.service';
+import { WorkerComponent } from './worker/worker.component';
 
 const dummyDateService = {
   getCurrentTime(){
@@ -30,7 +31,8 @@ function createNewDateService() {
     AppComponent,
     ClosedCountPipe,
     ElapsedPipe,
-    BugStatsComponent
+    BugStatsComponent,
+    WorkerComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +49,6 @@ function createNewDateService() {
     // {provide : DateService, useFactory : createNewDateService},
     // {provide : ?, useValue : "Bug Tracker Application"}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [WorkerComponent]
 })
 export class AppModule { }
