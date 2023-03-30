@@ -1,0 +1,28 @@
+Run the following in the console after loading index.html
+
+const up_action = { type : 'UP' },
+        down_action = { type : 'DOWN' }
+
+function spinnerReducer(currentState = 100, action){
+    if (action.type === 'UP') return currentState + 1;
+    if (action.type === 'DOWN') return currentState - 1;
+    return currentState;
+}
+
+const store = StateManager.createStore(spinnerReducer)
+
+store.getState()
+
+store.dispatch(up_action)
+
+store.getState()
+
+store.subscribe(() => console.log(`store state : ${store.getState()}`))
+
+store.dispatch(up_action)
+
+store.dispatch(up_action)
+
+store.dispatch(down_action)
+
+store.dispatch(down_action)

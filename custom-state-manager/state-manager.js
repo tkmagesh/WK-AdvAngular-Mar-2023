@@ -26,7 +26,8 @@ const StateManager = (function(){
     function createStore(reducer){
         if (typeof reducer !== 'function') 
             throw new Error('reducer is mandatory to create the store')
-        _currentState = reducer(undefined, _init_action)
+        _reducer = reducer
+        _currentState = _reducer(undefined, _init_action)
         const store = {
             getState, 
             subscribe,
