@@ -1,0 +1,9 @@
+{
+    "builders" : {
+        "patch" : {
+            "description" : "",
+            "implementation" : "./dist/patch/index.js",
+            "schema" : "./dist/patch/schema.json"
+        }
+    }
+}

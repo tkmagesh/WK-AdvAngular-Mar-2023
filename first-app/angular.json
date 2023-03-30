@@ -10,6 +10,12 @@
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
+        "patch-builder-info": {
+          "builder": "@wk-app-builder/patch-info:patch",
+          "options": {
+            "target2run" : "build"
+          }
+        },
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
@@ -94,6 +100,7 @@
             "webWorkerTsConfig": "tsconfig.worker.json"
           }
         }
+        
       }
     }
   }

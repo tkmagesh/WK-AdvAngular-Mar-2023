@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "type" : "object",
+    "properties": {
+        "comments" : {
+            "description": "Any comment to be passed to the build",
+            "type" : "string",
+            "default" : "Just another angular application"
+        },
+        "file2patch": {
+            "description": "File where build data should be inserted",
+            "type": "string",
+            "default": "src/assets/build.json"
+        },
+        "target2run": {
+            "description": "Target to be executed after build data patching",
+            "type": "string"
+        }
+    }
+}
