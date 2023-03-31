@@ -6,7 +6,7 @@ export default createBuilder((options, ctx) => {
 }) */
 
 
-import { createBuilder } from "@angular-devkit/architect";
+import { BuilderContext, createBuilder } from "@angular-devkit/architect";
 import { getSystemPath, JsonObject, normalize } from '@angular-devkit/core';
 import { readFileSync, writeFileSync } from "fs";
 
@@ -16,7 +16,7 @@ interface BuildInfoOptions extends JsonObject {
 }
 
 export default createBuilder(
-  async ({ file2patch, target2run }: BuildInfoOptions, ctx) => {
+  async ({ file2patch, target2run }: BuildInfoOptions, ctx : BuilderContext) => {
   // builder logic
   ctx.logger.info('Patching has been started...');
   try {
